@@ -1,0 +1,3 @@
+var list = document.querySelector("#email_list")
+
+list.insertAdjacentHTML("beforeend","<%= j render "email_new", index_email: @index_email, email: @email %>")

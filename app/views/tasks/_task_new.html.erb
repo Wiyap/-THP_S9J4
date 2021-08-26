@@ -1,0 +1,5 @@
+<li><%="#{task.title} , to read: #{task.deadline.strftime('%D')}"%>
+  <%= link_to task_path(task), method: :delete, remote: true do %>
+    <i class="fas fa-trash"></i>
+  <% end %> 
+</li>

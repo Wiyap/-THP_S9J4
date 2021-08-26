@@ -1,0 +1,23 @@
+var emailListChild = document.querySelector("#email_list").children
+var objectLink = document.querySelectorAll("#object_link")
+var readButton = document.querySelector("#read_button")
+
+for(let i=0; i < objectLink.length; i++){
+  let emailRead = emailListChild[i]
+  let emailClass = emailRead.classList
+  let objectLinkClass = objectLink[i].classList
+  
+  if(objectLink[i].textContent == "<%= @object_email %>"){
+    if(emailClass[1] == "text-white"){
+      emailClass.remove("text-white")
+      emailClass.remove("bg-secondary")
+      objectLinkClass.remove("text-light")
+      readButton.value = "Marquer comme lu"
+    }else if(emailClass[1]!= "text-white"){
+      emailClass.add("text-white")
+      emailClass.add("bg-secondary")
+      objectLinkClass.add("text-light")
+      readButton.value = "Marquer comme non-lu"
+    }
+  }
+}

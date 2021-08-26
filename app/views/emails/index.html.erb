@@ -1,0 +1,29 @@
+<div class="container">
+  <div class ="row">
+    <div class="col-6 ">
+      <h1> La boîte mails </h1>
+      <div id="email_list">
+        <% @all_emails.each do  |email|%>
+          <% if email.read %>
+          <div class="card text-white bg-secondary">
+            <div class="card-header"><h5> Emails n°<%= (@all_emails.index(email) + 1) %></h5></div>
+            <div class="card-text d-flex align-items-center justify-content-center">
+              <%= link_to "#{email.object}", email_path(email.id), method: :get, remote: true, class: "text-light", id: "object_link" %>
+            </div>
+          </div>
+          <% else %>
+            <div class="card">
+              <div class="card-header"><h5> Emails n°<%= @all_emails.index(email) +1 %></h5></div>
+              <div class="card-text d-flex align-items-center justify-content-center">
+                <%= link_to "#{email.object}", email_path(email.id), method: :get, remote: true, id: "object_link" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <%= button_to "Add", emails_path, class: "btn btn-primary", methode: :post, remote: true %>
+    </div>
+    <div class="col-6" id="show_email">
+    </div>
+  </div>
+</div>

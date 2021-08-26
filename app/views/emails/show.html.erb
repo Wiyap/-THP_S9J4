@@ -1,0 +1,9 @@
+  <h1> Email sélectionné </h1>
+  <div class="card" id="email_show">
+    <h5 class="card-header"><%= @email.object %></h5>
+    <div class="card-text d-flex align-items-center justify-content-center"><%= @email.body %></div>
+    <div class="card-footer d-flex align-items-center justify-content-around"> 
+        <%= button_to "Supprimer", email_path(@email), class: "btn btn-danger", methode: :delete, remote: true %>
+        <%= button_to "Marquer comme non-lu", emails_path, class: "btn btn-warning", methode: :post, remote: true %>
+    </div>
+  </div>

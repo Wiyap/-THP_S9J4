@@ -1,0 +1,21 @@
+var email = document.querySelector("#show_email")
+var emailChild = email.children
+var emailRead = document.querySelector("#email_list").children
+var objectLink = document.querySelectorAll("#object_link")
+
+if (emailChild.length == 1){
+  emailChild[0].remove()
+  email.insertAdjacentHTML("beforeend","<%= j render "show", email: @email %>")
+}else if (emailChild.length == 0){
+  email.insertAdjacentHTML("beforeend","<%= j render "show", email: @email %>")
+}
+
+for(let i=0; i < objectLink.length; i++){
+  let objectLinkClass = objectLink[i].classList
+  let emailClass = emailRead[i].classList
+  if(objectLink[i].textContent == "<%= @object_email %>"){
+    emailClass.add("text-white")
+    emailClass.add("bg-secondary")
+    objectLinkClass.add("text-light")
+  }
+}

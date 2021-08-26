@@ -4,13 +4,16 @@
   <ul>
   <% @categories.each do  |category|%>
   <li><%= category.title  %></li>
-  <div class="card">
+  <div class="card" id="list">
     <ul>
       <% category.tasks.each do |task|  %>
       <li>
         <%= task.title  %>
         <% unless task.deadline.nil? %>
           , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+        <%= link_to task_path(task), method: :delete, remote: true do %>
+          <i class="fas fa-trash"></i>
         <% end %>
       </li>
       <% end %>
@@ -27,7 +30,9 @@
         <% unless task.image.nil? %>
           <%= image_tag task.image, class: "rounded-circle" %>
         <% end %>
+        
       </div>
     <% end %>
   </div>
 </div>
+

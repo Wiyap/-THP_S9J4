@@ -1,0 +1,12 @@
+var listContainer = document.querySelector("#email_list")
+var emailList = listContainer.children
+var emailShow = document.querySelector("#show_email").children[0]
+
+for(let i=0; i < emailList.length; i++){
+  let email = emailList[i]
+  let emailObject= email.children[1].children[0].textContent
+  if(emailObject == "<%= @email_object %>"){
+    email.remove()
+    emailShow.remove()
+  }
+}

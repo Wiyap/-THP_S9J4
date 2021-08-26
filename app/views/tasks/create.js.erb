@@ -1,0 +1,9 @@
+for (let i=0 ; i < list.length; i++){
+  let list = document.querySelectorAll("#list")
+  let sibling = list[i].previousElementSibling.textContent
+  let ul = list[i].childNodes[1]
+
+  if (sibling  == "<%= @category.title %>"){
+    ul.insertAdjacentHTML("beforeend","<%= j render "task_new", task: @task %>")
+  }
+}
